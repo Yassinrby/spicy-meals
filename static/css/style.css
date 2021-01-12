@@ -1,0 +1,28 @@
+body {
+    height: 100%;
+    width: 100%;
+}
+
+.navbar-brand {
+    font-weight: 800;
+}
+
+.logo {
+    color: #a51409;
+}
+
+footer {
+  height: 15%;  
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #a51409;
+  color: white;
+  text-align: center;
+}
+
+.footer-icon {
+    color: white;
+    margin-top: 15px;
+}
