@@ -35,3 +35,11 @@ footer {
 .card-panel {
     display: table;
 }
+
+.button {
+    margin-top: 15px;
+    width: 33%;
+    color: white;
+    background-color: #a51409;
+    border: none;
+}

@@ -2,5 +2,32 @@
 {% block title %} Register {% endblock %}
 
 {% block content %}
+<div class="container">
+    <div class="card mx-auto">
+        <div class="card-body">
+            <form method="POST" action="{{ url_for('register') }}">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="username">Username:</label>
+                        <input id="username" name="username" type="text" class="validate" minlength="5" maxlength="15"
+                            pattern="^[a-zA-Z0-9]{5,15}$" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="password">Password:</label>
+                        <input id="password" name="password" type="password" class="validate" minlength="5"
+                            maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
+                    </div>
+                </div>
+                <div class="row mx-auto">   
+                    <button type="submit" class="button">
+                    Register
+                </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
