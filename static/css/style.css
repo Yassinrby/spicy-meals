@@ -27,13 +27,17 @@ footer {
     margin-top: 15px;
 }
 
+.header {
+    margin-top: 25px;
+}
+
 .card {
-    margin: 100px 0;
+    margin: 80px 0;
     display: table;
 }
 
-.card-panel {
-    display: table;
+.validate {
+    width: 80%;
 }
 
 .button {
@@ -42,4 +46,8 @@ footer {
     color: white;
     background-color: #a51409;
     border: none;
+}
+
+.flash-message {
+    color: orange;
 }

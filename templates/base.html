@@ -30,7 +30,7 @@
                     <a class="nav-link" href="#">Home</a>
                     <a class="nav-link" href="#">Recipes</a>
                     <a class="nav-link" href="#">Add Recipe</a>
-                    <a class="nav-link" href="#">Log in</a>
+                    <a class="nav-link" href="{{ url_for('login') }}">Log in</a>
                     <a class="nav-link" href="#">Log out</a>
                     <a class="nav-link" href="{{ url_for('register') }}">Register</a>
                 </div>
@@ -38,9 +38,20 @@
         </div>
     </nav>
     
+    <section>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="row flashes">
+            <h4 class="flash-message text-center">{{ message }}</h4>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </section>
+
     {% block content %}
     {% endblock %}
-
 
     <footer>
         <div class="container">
