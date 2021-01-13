@@ -26,3 +26,12 @@ footer {
     color: white;
     margin-top: 15px;
 }
+
+.card {
+    margin: 100px 0;
+    display: table;
+}
+
+.card-panel {
+    display: table;
+}
