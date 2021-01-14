@@ -51,3 +51,18 @@ footer {
 .flash-message {
     color: orange;
 }
+
+#close-btn {
+    background-color: whitesmoke;
+    color: #a51409;
+    border: #a51409;
+    
+}
+
+#logout-btn {
+    background-color: #a51409;
+    color: whitesmoke;
+    border: whitesmoke;
+    text-decoration: none;
+}
+

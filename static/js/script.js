@@ -1,21 +1,5 @@
-$('a.logout').confirm({
-    title: 'Confirm!',
-    content: 'Simple confirm!',
-    buttons: {
-        confirm: function () {
-            $.alert('Confirmed!');
-        },
-        cancel: function () {
-            $.alert('Canceled!');
-        },
-        somethingElse: {
-            text: 'Something else',
-            btnClass: 'btn-blue',
-            keys: ['enter', 'shift'],
-            action: function(){
-                $.alert('Something else?');
-            }
-        }
-    }
+$(document).ready(function(){
+  $("#action-confirm").click(function(){
+    $("#logout-confirm").show();
+  });
 });
-       
