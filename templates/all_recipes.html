@@ -7,11 +7,12 @@
     <div class="row">
         {% for recipe in recipes %}
         <div class="col-md-4">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <img src="{{ recipe.image_url }}" class="card-img-top" alt="Recipe image">
-                <div class="card-body">
-                    <h5 class="card-title">{{ recipe.meal_name }}</h5>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div class="card-body recipe-card">
+                    <h7 class="card-title">{{ recipe.meal_name }}</h7>
+                    <hr>
+                    <a href="#" class="browse-btn">See Recipe</a>
                 </div>
             </div>
         </div>
