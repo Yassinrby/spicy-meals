@@ -5,7 +5,9 @@
 
 <div class="container">
     <div class="row">
-        
+        {% for recipe in recipes %}
+            {% include "includes/recipe-card.html" %}
+        {% endfor %}
     </div>
 </div>
 
