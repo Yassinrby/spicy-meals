@@ -55,12 +55,12 @@ def login():
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
-                    existing_user["password"], request.form.get("password")):
-                        session["user"] = request.form.get("username").lower()
-                        flash("Welcome {}".format(
-                            request.form.get("username")))
-                        return redirect(url_for(
-                            "home", username=session["user"]))
+                    existing_user["password"], request.form.get(
+                        "password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome {}".format(request.form.get("username")))
+                return redirect(url_for(
+                    "home", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -76,10 +76,9 @@ def login():
 
 @app.route("/logout")
 def logout():
-    # remove user from session cookie
     flash("You have been logged out")
     session.pop("user")
-    return redirect(url_for("login"))
+    return redirect(url_for("home"))
 
 
 @app.route("/add_recipe", methods=["GET", "POST"])
@@ -100,7 +99,7 @@ def add_recipe():
         mongo.db.recipe.insert_one(new_recipe)
         flash("Thank you the new recipe!")
         return redirect(url_for("home"))
-        
+
     meals = mongo.db.meals.find().sort("meal_type", 1)
     return render_template("add_recipe.html", meals=meals)
 

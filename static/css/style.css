@@ -20,6 +20,7 @@ footer {
   background-color: #a51409;
   color: white;
   text-align: center;
+  z-index: 999;
 }
 
 .footer-icon {
@@ -66,3 +67,22 @@ footer {
     text-decoration: none;
 }
 
+.header {
+    margin-top: 25px;
+}
+
+.header h1 {
+    font-weight: 800;
+    color: #a51409;
+}
+
+
+.browse-btn {
+    background-color: #a51409;
+    color: white;
+    border: none;
+}
+
+.header {
+    margin: 30px 0;
+}
