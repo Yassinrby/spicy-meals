@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %} Edit Recipe {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row text-center">
+        <div class="col-md-12 header">
+            <h1>Edit Recipe</h1>
+        </div>
+    </div>
+    <br>
+    <div class="form-container">
+        <div class="card-body">
+            <form method="POST" action ="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
+                <label for="meal_type" class="form-label">Type of meal</label>
+                <select class="form-select" id="meal_type" name="meal_type" required>
+                    <option disabled selected>Select Meal</option>
+                    {% for meal in meals %}
+                        <option value="{{ meal.meal_type }}">{{ meal.meal_type }}</option>
+                    {% endfor %}
+
+                </select>
+                <br>
+                <label for="meal_name" class="form-label">Meal name</label>
+                <input id="meal_name" name="meal_name" class="form-control" 
+                type="text" placeholder="Meal name" minlength="5" maxlength="150" required>
+                <br>
+                <label for="meal_description" class="form-label">Meal description</label>
+                <textarea class="form-control" placeholder="Short meal description" minlength="5" maxlength="500"
+                id="meal_description" name="meal_description" required></textarea>
+                <br>
+                <label for="cuisine" class="form-label">Cuisine (optional)</label>
+                <input class="form-control" type="text" placeholder="Which country or continent" 
+                id="cuisine" name="cuisine">
+                <br>
+                <label for="cooking_time" class="form-label">Cooking time (in min)</label>
+                <input id="cooking_time" name="cooking_time" class="form-control" type="text" 
+                placeholder="Cooking time in minutes" required>
+                <br>
+                <label for="number_of_servings" class="form-label">Number of servings</label>
+                <input id="number_of_servings" name="number_of_servings" class="form-control" placeholder="Number of servings" required>
+                <br>
+                <label for="ingredients" class="form-label">Ingredients</label>
+                <textarea class="form-control" placeholder="Each ingredient on a new line" name="ingredients" id="ingredients"></textarea>
+                <br>
+                <label for="directions" class="form-label">Directions</label>
+                <textarea class="form-control" placeholder="Each direction on a new line" name="directions" id="directions"></textarea>
+                <br>
+                <label for="image_url" class="form-label">Image URL</label>
+                <input class="form-control" placeholder="Default input" name="image_url" id="image_url">
+                <br>
+                <div class="text-center">
+                    <button type="submit" class="button text-center">
+                        Edit Recipe
+                    </button>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                
+                
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

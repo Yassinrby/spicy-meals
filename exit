@@ -1,0 +1,131 @@
+[33mcommit 8060c8e7aa7a7fdf49b18c2c7c61dabada6d3716[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Mon Jan 18 11:26:06 2021 +0000
+
+    Function for selected recipe up and running
+
+[33mcommit e71ff8e47bee9c9141918825dbd81aae4a69824f[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Sun Jan 17 16:01:09 2021 +0000
+
+    Recipe page template created
+
+[33mcommit ef6867bf0bda85750c4cab96cbc097c9c4ac07b7[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Sat Jan 16 20:24:21 2021 +0000
+
+    Recipe cards styled
+
+[33mcommit 1ad5f13642253ff8819cfcc8a6295819eeda03a8[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Sat Jan 16 19:57:38 2021 +0000
+
+    bugfix in add recipe form
+
+[33mcommit 430a5cf92c4ebe3444ec669be38b6bf60c80a342[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Sat Jan 16 19:08:42 2021 +0000
+
+    Rendering recipes from db to recipes gallery working well
+
+[33mcommit 86b6cb8d8b706e3f82068935efbdc8764fea74c8[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Sat Jan 16 18:14:21 2021 +0000
+
+    Cards without content rendering on Recipes page
+
+[33mcommit 84f279d1c8104342e5000c9be6468802102d68d5[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Sat Jan 16 17:37:20 2021 +0000
+
+    New directory with recipe-card template
+
+[33mcommit 2d7b50995e1c8fe92a1fb7631d22d1d90bdfa3b1[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Sat Jan 16 17:33:55 2021 +0000
+
+    Recipe gallery template created
+
+[33mcommit 7ce42820fb06ba23ff0b3b17c547518b4be3fca0[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Sat Jan 16 16:45:04 2021 +0000
+
+    Home page done
+
+[33mcommit 7508f46ed35a87a046839df3caf953078777d1d7[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Thu Jan 14 19:14:51 2021 +0000
+
+    Adding recipe works fine with db
+
+[33mcommit 256981b4ffcf64bf38ae30d702b1b14233b157f3[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Thu Jan 14 15:35:17 2021 +0000
+
+    Add recipe template created
+
+[33mcommit d9146312e6df5a009d8bcf005ea5583fc6c063a2[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Thu Jan 14 15:08:21 2021 +0000
+
+    Modal asking to confirm logout in place
+
+[33mcommit af83de57a439e31ccefd6a55b6fbe367c8ba7239[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Wed Jan 13 18:47:59 2021 +0000
+
+    Logout function complete
+
+[33mcommit 7a1322250d39a6fac614a2e98d60fbcb3fd118e9[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Wed Jan 13 17:27:22 2021 +0000
+
+    Sign in page and function complete
+
+[33mcommit 598104df284f9626d6bd46231c689a5175131a84[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Wed Jan 13 15:44:09 2021 +0000
+
+    Registration functionality working
+
+[33mcommit f7cca0b2b93d6ab436890d69cfdee92899d6a64d[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Wed Jan 13 13:13:10 2021 +0000
+
+    register template added
+
+[33mcommit db0907386dd59267dd8d9f5b8f549d7a2c14172d[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Tue Jan 12 14:51:19 2021 +0000
+
+    Base template done
+
+[33mcommit 28d47ab606fd817348b1be78058c563ca6f403bd[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Tue Jan 12 12:34:30 2021 +0000
+
+    App connected to DB
+
+[33mcommit 236fc48c4e9f818cb24e8e54674044f5491a6a57[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Tue Jan 12 12:03:57 2021 +0000
+
+    Requirements and Procfile added
+
+[33mcommit 68624957149fb2c8dd4fc93898818a21496c32da[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Tue Jan 12 10:43:33 2021 +0000
+
+    Flask app created
+
+[33mcommit a4c7eb5e24ccf5f7aaa6066fca2403c534e86844[m
+Author: Yassinrby <yassinrby@outlook.com>
+Date:   Tue Jan 12 09:26:26 2021 +0000
+
+    initial commit
+
+[33mcommit f474315f7b8a20cf58bc4833f372703954222c39[m
+Author: Yassinrby <66361729+Yassinrby@users.noreply.github.com>
+Date:   Tue Jan 12 10:22:21 2021 +0100
+
+    Initial commit

@@ -1,7 +1,7 @@
-body {
+/* body {
     height: 100%;
     width: 100%;
-}
+} */
 
 .navbar-brand {
     font-weight: 800;
@@ -12,7 +12,7 @@ body {
 }
 
 footer {
-  height: 15%;  
+  height: 10%;  
   position: fixed;
   left: 0;
   bottom: 0;
@@ -96,4 +96,13 @@ footer {
 
 .recipe-card {
     height: 15vw;
+}
+
+.img-fluid {
+    height: 45vh;
+    width: 45vw;
+}
+
+.menu-header {
+    margin: 15px 0;
 }
