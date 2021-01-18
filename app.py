@@ -20,6 +20,14 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
+def edit_recipe(recipe_id):
+    recipe = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
+
+    meals = mongo.db.meals.find().sort("meal_type", 1)
+    return render_template("edit_recipe.html", recipe=recipe, meals=meals)
+
+
 @app.route("/recipe/<recipe_id>")
 def recipe(recipe_id):
     selected_recipe = mongo.db.recipe.find_one(

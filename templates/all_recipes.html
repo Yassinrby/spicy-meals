@@ -13,6 +13,9 @@
                     <h7 class="card-title">{{ recipe.meal_name }}</h7>
                     <hr>
                     <a href="{{ url_for('recipe', recipe_id=recipe._id) }}" class="browse-btn">See Recipe</a>
+                    <hr>
+                    <span><a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">Edit Recipe</a></span>
+                    <span><a href="#">Delete Recipe</a></span>
                 </div>
             </div>
         </div>
