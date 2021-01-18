@@ -14,8 +14,10 @@
                     <hr>
                     <a href="{{ url_for('recipe', recipe_id=recipe._id) }}" class="browse-btn">See Recipe</a>
                     <hr>
+                    {% if session.user == recipe.author %}
                     <span><a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">Edit Recipe</a></span>
                     <span><a href="#">Delete Recipe</a></span>
+                    {% endif %}
                 </div>
             </div>
         </div>

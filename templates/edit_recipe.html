@@ -14,9 +14,13 @@
             <form method="POST" action ="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
                 <label for="meal_type" class="form-label">Type of meal</label>
                 <select class="form-select" id="meal_type" name="meal_type" required>
-                    <option disabled selected>Select Meal</option>
+                    <option disabled>Select Meal</option>
                     {% for meal in meals %}
-                        <option value="{{ meal.meal_type }}">{{ meal.meal_type }}</option>
+                        {% if meal.meal_type == recipe.meal_type %}
+                            <option selected value="{{ meal.meal_type }}">{{ meal.meal_type }}</option>   
+                        {% else %}
+                            <option value="{{ meal.meal_type }}">{{ meal.meal_type }}</option>
+                            {% endif %}    
                     {% endfor %}
 
                 </select>
