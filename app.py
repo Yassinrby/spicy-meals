@@ -20,8 +20,32 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+@app.route("/delete_recipe/<recipe_id>")
+def delete_recipe(recipe_id):
+    mongo.db.recipe.remove({"_id": ObjectId(recipe_id)})
+    flash("Recipe Deleted!")
+    return redirect(url_for("home"))
+
+
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+    if request.method == "POST":
+        new_recipe = {
+            "meal_type": request.form.get("meal_type"),
+            "meal_name": request.form.get("meal_name"),
+            "meal_description": request.form.get("meal_description"),
+            "cuisine": request.form.get("cuisine"),
+            "cooking_time": request.form.get("cooking_time"),
+            "number_of_servings": request.form.get("number_of_servings"),
+            "ingredients": request.form.get("ingredients"),
+            "directions": request.form.get("directions"),
+            "image_url": request.form.get("image_url"),
+            "author": session["user"]
+        }
+        mongo.db.recipe.update({"_id": ObjectId(recipe_id)}, new_recipe)
+        flash("Recipe Updated")
+        return redirect(url_for("home"))
+
     recipe = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
 
     meals = mongo.db.meals.find().sort("meal_type", 1)
@@ -32,7 +56,8 @@ def edit_recipe(recipe_id):
 def recipe(recipe_id):
     selected_recipe = mongo.db.recipe.find_one(
         {"_id": ObjectId(recipe_id)})
-    return render_template("recipe.html", selected_recipe=selected_recipe)
+    return render_template(
+        "recipe.html", selected_recipe=selected_recipe)
 
 
 @app.route("/all_recipes/")
