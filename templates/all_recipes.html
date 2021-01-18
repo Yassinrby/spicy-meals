@@ -12,7 +12,7 @@
                 <div class="card-body recipe-card">
                     <h7 class="card-title">{{ recipe.meal_name }}</h7>
                     <hr>
-                    <a href="#" class="browse-btn">See Recipe</a>
+                    <a href="{{ url_for('recipe', recipe_id=recipe._id) }}" class="browse-btn">See Recipe</a>
                 </div>
             </div>
         </div>

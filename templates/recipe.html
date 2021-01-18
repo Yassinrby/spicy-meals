@@ -4,19 +4,10 @@
 {% block content %}
 
 <div class="container">
-    <div class="row">
-        {% for recipe in recipes %}
-        <div class="col-md-4">
-            <div class="card">
-                <img src="{{ recipe.image_url }}" class="card-img-top" alt="Recipe image">
-                <div class="card-body recipe-card">
-                    <h7 class="card-title">{{ recipe.meal_name }}</h7>
-                    <hr>
-                    <a href="#" class="browse-btn">See Recipe</a>
-                </div>
-            </div>
+    <div class="row text-center">
+        <div class="col-md-12 header">
+            <h1>{{ selected_recipe.meal_name }}</h1>
         </div>
-        {% endfor %}
     </div>
 </div>
 
