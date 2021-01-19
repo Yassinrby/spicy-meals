@@ -137,8 +137,8 @@ def add_recipe():
             "cuisine": request.form.get("cuisine"),
             "cooking_time": request.form.get("cooking_time"),
             "number_of_servings": request.form.get("number_of_servings"),
-            "ingredients": request.form.getlist("ingredients"),
-            "directions": request.form.getlist("directions"),
+            "ingredients": request.form.get("ingredients"),
+            "directions": request.form.get("directions"),
             "image_url": request.form.get("image_url"),
             "author": session["user"]
         }

@@ -43,9 +43,9 @@
             </div>
             <div class="row recipe-col">
                 <ul>
-                    {% for ingredient in selected_recipe.directions %}
+                    {% for ingredient in selected_recipe.directions.splitlines() %}
                     <li>
-                      <p>  {{ingredient}} </p>
+                    {{ingredient}}
                     </li>
                     {% endfor %}
                 </ul>
@@ -57,7 +57,7 @@
             </div>
             <div class="row recipe-col">
                 <ol>
-                    {% for directions in selected_recipe.directions %}
+                    {% for directions in selected_recipe.directions.splitlines() %}
                     <li>
                        <p> {{directions}} </p>
                     </li>
