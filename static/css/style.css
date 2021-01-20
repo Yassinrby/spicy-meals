@@ -9,8 +9,8 @@
 }
 
 footer {
-  height: 10%;  
-  position: fixed;
+  height: 20%;  
+  position: relative;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -110,4 +110,12 @@ footer {
 
 .card {
     min-width: 100%;
+}
+
+.recipe-gallery {
+    margin: 30px 0;
+}
+
+.form-container {
+    margin: 50px 0;
 }

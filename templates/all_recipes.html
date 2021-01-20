@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="container">
-    <div class="row">
+    <div class="row recipe-gallery">
         {% for recipe in recipes %}
         <div class="col-md-4">
             <div class="card">
@@ -16,11 +16,11 @@
                 <div class="card-body recipe-card">
                     <h7 class="card-title">{{ recipe.meal_name }}</h7>
                     <hr>
-                    <a href="{{ url_for('recipe', recipe_id=recipe._id) }}" class="browse-btn">See Recipe</a>
+                    <a href="{{ url_for('recipe', recipe_id=recipe._id) }}" class="browse-btn btn btn-light">See Recipe</a>
                     <hr>
                     {% if session.user == recipe.author %}
-                    <span><a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">Edit Recipe</a></span>
-                    <span><a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}">Delete Recipe</a></span>
+                    <span><a class="btn btn-secondary btn-sm" href="{{ url_for('edit_recipe', recipe_id=recipe._id)}}">Edit Recipe</a></span>
+                    <span><a class="btn btn-outline-danger btn-sm" href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}">Delete Recipe</a></span>
                     {% endif %}
                 </div>
             </div>
