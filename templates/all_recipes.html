@@ -8,7 +8,11 @@
         {% for recipe in recipes %}
         <div class="col-md-4">
             <div class="card">
+                {% if recipe.image_url and ('http') %}
                 <img src="{{ recipe.image_url }}" class="card-img-top" alt="Recipe image">
+                {% else %}
+                <img src="{{ url_for('static', filename='images/noimage.png') }}" class="card-img-top" alt="Recipe image">
+                {% endif %}
                 <div class="card-body recipe-card">
                     <h7 class="card-title">{{ recipe.meal_name }}</h7>
                     <hr>

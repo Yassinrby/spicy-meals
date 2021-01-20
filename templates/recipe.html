@@ -18,7 +18,11 @@
     <div class="row">
         <div class="col-md-5">
             <div class="row">
+                {% if selected_recipe.image_url and ('http') %}
                 <img src="{{ selected_recipe.image_url }}" class="img-fluid" alt="Meal picture">
+                {% else %}
+                <img src="{{ url_for('static', filename='images/noimage.png') }}" class="card-img-top" alt="Recipe image">
+                {% endif %}
             </div>
             <div class="row">
                 <span style="font-weight: bold;">Author: <br>{{ selected_recipe.author }}</span>
@@ -43,9 +47,9 @@
             </div>
             <div class="row recipe-col">
                 <ul>
-                    {% for ingredient in selected_recipe.directions.splitlines() %}
+                    {% for ingredient in selected_recipe.ingredients.splitlines() %}
                     <li>
-                    {{ingredient}}
+                        {{ingredient}}
                     </li>
                     {% endfor %}
                 </ul>
@@ -59,7 +63,7 @@
                 <ol>
                     {% for directions in selected_recipe.directions.splitlines() %}
                     <li>
-                       <p> {{directions}} </p>
+                        <p> {{directions}} </p>
                     </li>
                     {% endfor %}
                 </ol>

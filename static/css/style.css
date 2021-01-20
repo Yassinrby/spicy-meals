@@ -1,7 +1,4 @@
-/* body {
-    height: 100%;
-    width: 100%;
-} */
+
 
 .navbar-brand {
     font-weight: 800;
@@ -109,4 +106,8 @@ footer {
 
 .recipe-col {
     margin: 25px 0;
+}
+
+.card {
+    min-width: 100%;
 }
