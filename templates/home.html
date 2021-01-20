@@ -4,26 +4,23 @@
 {% block content %}
 
 <section class="header">
-    <div class="container">
+    <div class="container-fluid">
         <div class="text-center header">
             <h1>Welcome to Spicy Meals!</h1>
             <p>Browse your favourite Spicy foods here</p>
             <a id="logout-btn" class=" btn btn-primary" type="button" href="{{ url_for('all_recipes') }}">Browse Recipe</a>
         </div>
-    </div>
-</section>
-<section class="header">
-    <div class="container-fluid">
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ url_for('static', filename='images/chili.jpg') }}" class="d-block w-100" alt="...">
+                    <img src="{{ url_for('static', filename='images/spicy3.jpg') }}" class="d-block w-100" alt="Spicy food">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ url_for('static', filename='images/chili.jpg') }}" class="d-block w-100" alt="...">
+                    <img src="{{ url_for('static', filename='images/spicy1.jpg') }}" class="d-block w-100" alt="Spicy food">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ url_for('static', filename='images/chili.jpg') }}" class="d-block w-100" alt="...">
+                    <img src="{{ url_for('static', filename='images/spicy2.jpg') }}" class="d-block w-100" alt="Spicy food">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
@@ -35,8 +32,9 @@
                 <span class="visually-hidden">Next</span>
             </a>
         </div>
-    </div>
+        </div>
 </section>
+
 
 
 {% endblock %}

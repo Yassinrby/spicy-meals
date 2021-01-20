@@ -29,9 +29,9 @@
                 <textarea class="form-control" placeholder="Short meal description" minlength="5" maxlength="500"
                 id="meal_description" name="meal_description" required></textarea>
                 <br>
-                <label for="cuisine" class="form-label">Cuisine (optional)</label>
-                <input class="form-control" type="text" placeholder="Which country or continent" 
-                id="cuisine" name="cuisine">
+                <label for="cuisine" class="form-label">Cuisine</label>
+                <input class="form-control" type="text" placeholder="Which country or continent/region" 
+                id="cuisine" name="cuisine" required>
                 <br>
                 <label for="cooking_time" class="form-label">Cooking time (in min)</label>
                 <input id="cooking_time" name="cooking_time" class="form-control" type="text" 
@@ -41,13 +41,13 @@
                 <input id="number_of_servings" name="number_of_servings" class="form-control" placeholder="Number of servings" required>
                 <br>
                 <label for="ingredients" class="form-label">Ingredients</label>
-                <textarea class="form-control" placeholder="Each ingredient on a new line" name="ingredients" id="ingredients"></textarea>
+                <textarea class="form-control" placeholder="Each ingredient on a new line" name="ingredients" id="ingredients" rows="3"></textarea>
                 <br>
                 <label for="directions" class="form-label">Directions</label>
-                <textarea class="form-control" placeholder="Each direction on a new line" name="directions" id="directions"></textarea>
+                <textarea class="form-control" placeholder="Each direction on a new line" name="directions" id="directions" rows="3"></textarea>
                 <br>
                 <label for="image_url" class="form-label">Image URL</label>
-                <input class="form-control" placeholder="Default input" name="image_url" id="image_url">
+                <input class="form-control" placeholder="Image URL" name="image_url" id="image_url">
                 <br>
                 <div class="text-center">
                     <button type="submit" class="button text-center btn btn-secondary btn-sm">

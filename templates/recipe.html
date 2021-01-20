@@ -4,77 +4,81 @@
 {% block content %}
 
 <div class="container">
-    <div class="row text-center">
-        <div class="col-md-12 header">
-            <h1>{{ selected_recipe.meal_name }}</h1>
-        </div>
-    </div>
-    <div class="row text-center">
-        {% if session.user == selected_recipe.author%}
-        <div class="col-md-6">
-            <a class="btn btn-secondary btn-sm" href="{{ url_for('edit_recipe', recipe_id=selected_recipe._id) }}">Edit
-                Recipe</a>
+    <div class="form-container">
+        <div class="row text-center">
+            <div class="col-md-12 header">
+                <h1>{{ selected_recipe.meal_name }}</h1>
             </div>
-        <div class="col-md-6">
-            <a class="btn btn-outline-danger btn-sm"
-                href="{{ url_for('delete_recipe', recipe_id=selected_recipe._id) }}">Delete Recipe</a></div>
-        {% endif %}
-    </div>
+        </div>
+        <div class="row text-center">
+            {% if session.user == selected_recipe.author%}
+            <div class="col-md-6">
+                <a class="btn btn-secondary btn-sm"
+                    href="{{ url_for('edit_recipe', recipe_id=selected_recipe._id) }}">Edit
+                    Recipe</a>
+            </div>
+            <div class="col-md-6">
+                <a class="btn btn-outline-danger btn-sm"
+                    href="{{ url_for('delete_recipe', recipe_id=selected_recipe._id) }}">Delete Recipe</a></div>
+            {% endif %}
+        </div>
 
-    <br>
-    <div class="row">
-        <div class="col-md-5">
-            <div class="row">
-                {% if selected_recipe.image_url and ('http') %}
-                <img src="{{ selected_recipe.image_url }}" class="img-fluid" alt="Meal picture">
-                {% else %}
-                <img src="{{ url_for('static', filename='images/noimage.png') }}" class="card-img-top"
-                    alt="Recipe image">
-                {% endif %}
+        <br>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="row">
+                    {% if selected_recipe.image_url and ('http') %}
+                    <img src="{{ selected_recipe.image_url }}" class="img-fluid" alt="Meal picture">
+                    {% else %}
+                    <img src="{{ url_for('static', filename='images/noimage.png') }}" class="card-img-top"
+                        alt="Recipe image">
+                    {% endif %}
+                </div>
+                <div class="row">
+                    <span style="font-weight: bold;">Author: <br>{{ selected_recipe.author }}</span>
+                </div>
             </div>
-            <div class="row">
-                <span style="font-weight: bold;">Author: <br>{{ selected_recipe.author }}</span>
-            </div>
-        </div>
-        <div class="col-md-7">
-            <div class="row">
-                <p style="font-weight: bold;">{{ selected_recipe.meal_description }}</p>
-            </div>
-            <div class="row">
-                <p> <strong> Meal Type: </strong>{{ selected_recipe.meal_type }}</p>
-                <p><strong> Cuisine: </strong>{{ selected_recipe.cuisine }}</p>
-                <p>Cooking time: {{ selected_recipe.cooking_time }}</p>
-                <p>Servings: {{ selected_recipe.number_of_servings }}</p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="row">
-                <h3 class="menu-header">Ingredients:</h3>
-            </div>
-            <div class="row recipe-col">
-                <ul>
-                    {% for ingredient in selected_recipe.ingredients.splitlines() %}
-                    <li>
-                        {{ingredient}}
-                    </li>
-                    {% endfor %}
-                </ul>
+            <div class="col-md-7">
+                <div class="row">
+                    <h5 style="font-weight: bold;">{{ selected_recipe.meal_description }}</h5>
+                </div>
+                <br>
+                <div class="row">
+                    <p> <strong> Meal Type: </strong>{{ selected_recipe.meal_type }}</p>
+                    <p><strong> Cuisine: </strong>{{ selected_recipe.cuisine }}</p>
+                    <p><strong> Cooking time: </strong>{{ selected_recipe.cooking_time }} min</p>
+                    <p><strong>Servings:</strong> {{ selected_recipe.number_of_servings }}</p>
+                </div>
             </div>
         </div>
-        <div class="col-md-8">
-            <div class="row">
-                <h3 class="menu-header">Directions:</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <h3 class="menu-header">Ingredients:</h3>
+                </div>
+                <div class="row recipe-col">
+                    <ul>
+                        {% for ingredient in selected_recipe.ingredients.splitlines() %}
+                        <li>
+                            {{ingredient}}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
-            <div class="row recipe-col">
-                <ol>
-                    {% for directions in selected_recipe.directions.splitlines() %}
-                    <li>
-                        <p> {{directions}} </p>
-                    </li>
-                    {% endfor %}
-                </ol>
+            <div class="col-md-8">
+                <div class="row">
+                    <h3 class="menu-header">Directions:</h3>
+                </div>
+                <div class="row recipe-col">
+                    <ol>
+                        {% for directions in selected_recipe.directions.splitlines() %}
+                        <li>
+                            <p> {{directions}} </p>
+                        </li>
+                        {% endfor %}
+                    </ol>
+                </div>
             </div>
         </div>
     </div>

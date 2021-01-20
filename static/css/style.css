@@ -1,3 +1,6 @@
+body {
+    overflow: auto;
+}
 
 
 .navbar-brand {
@@ -9,8 +12,9 @@
 }
 
 footer {
-  height: 20%;  
-  position: relative;
+  height: 10%;
+  margin-top: 30px;  
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -108,7 +112,7 @@ footer {
     margin: 25px 0;
 }
 
-.card {
+.card-recipe {
     min-width: 100%;
 }
 
@@ -117,5 +121,5 @@ footer {
 }
 
 .form-container {
-    margin: 50px 0;
+    margin-bottom: 100px;
 }

@@ -38,7 +38,7 @@
                     <a class="nav-link" href="{{ url_for('add_recipe') }}">Add Recipe</a>
                     <a type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Log
                         out</a>
-                        {% else %}
+                    {% else %}
                     <a class="nav-link" href="{{ url_for('login') }}">Log in</a>
                     <a class="nav-link" href="{{ url_for('register') }}">Register</a>
                     {% endif %}
@@ -76,8 +76,10 @@
                         Are you sure you want to log out?
                     </div>
                     <div class="modal-footer">
-                        <a class="btn btn-secondary btn-sm"  id="close-btn" type="button" data-bs-dismiss="modal">Close</a>
-                        <a class="btn btn-outline-danger btn-sm" id="logout-btn" type="button" href="{{ url_for('logout') }}">Log out</a>
+                        <a class="btn btn-secondary btn-sm" id="close-btn" type="button"
+                            data-bs-dismiss="modal">Close</a>
+                        <a class="btn btn-outline-danger btn-sm" id="logout-btn" type="button"
+                            href="{{ url_for('logout') }}">Log out</a>
                     </div>
                 </div>
             </div>
@@ -93,10 +95,12 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col">
-                    <a target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-3x footer-icon"></i></a>
+                    <a target="_blank" href="https://www.instagram.com/"><i
+                            class="fab fa-instagram fa-3x footer-icon"></i></a>
                 </div>
                 <div class="col">
-                    <a target="_blank" href="https://www.facebook.com/"><i class="fab fa-facebook-square fa-3x footer-icon"></i></a>
+                    <a target="_blank" href="https://www.facebook.com/"><i
+                            class="fab fa-facebook-square fa-3x footer-icon"></i></a>
                 </div>
 
             </div>
