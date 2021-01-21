@@ -3,7 +3,6 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
-from functools import wraps
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -48,30 +47,44 @@ def delete_recipe(recipe_id):
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
-    if request.method == "POST":
-        new_recipe = {
-            "meal_type": request.form.get("meal_type"),
-            "meal_name": request.form.get("meal_name"),
-            "meal_description": request.form.get("meal_description"),
-            "cuisine": request.form.get("cuisine"),
-            "cooking_time": request.form.get("cooking_time"),
-            "number_of_servings": request.form.get("number_of_servings"),
-            "ingredients": request.form.get("ingredients"),
-            "directions": request.form.get("directions"),
-            "image_url": request.form.get("image_url"),
-            "author": session["user"]
-        }
-        mongo.db.recipe.update({"_id": ObjectId(recipe_id)}, new_recipe)
-        flash("Recipe Updated")
-        return redirect(url_for("home"))
+
+    if 'user' not in session:
+        flash('You must be logged in to edit the recipe!')
+        return redirect(url_for('login'))
+
+    user_session = mongo.db.users.find_one({'username': session['user']})
+
+    recipe = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
+
+    if recipe['author'] == user_session['username']:
+        if request.method == "POST":
+            new_recipe = {
+                "meal_type": request.form.get("meal_type"),
+                "meal_name": request.form.get("meal_name"),
+                "meal_description": request.form.get("meal_description"),
+                "cuisine": request.form.get("cuisine"),
+                "cooking_time": request.form.get("cooking_time"),
+                "number_of_servings": request.form.get("number_of_servings"),
+                "ingredients": request.form.get("ingredients"),
+                "directions": request.form.get("directions"),
+                "image_url": request.form.get("image_url"),
+                "author": session["user"]
+            }
+            mongo.db.recipe.update({"_id": ObjectId(recipe_id)}, new_recipe)
+            flash("Recipe Updated")
+            return redirect(url_for("home"))
+    else:
+        flash('You cant change this recipe')
+        return redirect(url_for('home'))
 
     recipe = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
 
     meals = mongo.db.meals.find().sort("meal_type", 1)
     return render_template("edit_recipe.html", recipe=recipe, meals=meals)
 
+# THE CODE BELLOW NEEDS TO BE OVERLOOKED:
 
-# if 'user' not in session:
+    # if 'user' not in session:
     #     flash('You must be logged in to edit the recipe!')
     #     return redirect(url_for('login'))
 
@@ -98,28 +111,6 @@ def edit_recipe(recipe_id):
     # else:
     #     flash("You can only edit your own recipes!")
     #     return redirect(url_for('home'))
-
-    # if request.method == "POST":
-    #     new_recipe = {
-    #         "meal_type": request.form.get("meal_type"),
-    #         "meal_name": request.form.get("meal_name"),
-    #         "meal_description": request.form.get("meal_description"),
-    #         "cuisine": request.form.get("cuisine"),
-    #         "cooking_time": request.form.get("cooking_time"),
-    #         "number_of_servings": request.form.get("number_of_servings"),
-    #         "ingredients": request.form.get("ingredients"),
-    #         "directions": request.form.get("directions"),
-    #         "image_url": request.form.get("image_url"),
-    #         "author": session["user"]
-    #     }
-    #     mongo.db.recipe.update({"_id": ObjectId(recipe_id)}, new_recipe)
-    #     flash("Recipe Updated")
-    #     return redirect(url_for("home"))
-
-    # recipe = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
-
-    # meals = mongo.db.meals.find().sort("meal_type", 1)
-    # return render_template("edit_recipe.html", recipe=recipe, meals=meals)
 
 
 @app.route("/recipe/<recipe_id>")
