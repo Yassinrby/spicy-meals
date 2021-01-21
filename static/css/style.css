@@ -116,6 +116,10 @@ footer {
     min-width: 100%;
 }
 
+.card-body {
+    height: 30vw;
+}
+
 .recipe-gallery {
     margin: 30px 0;
 }

@@ -3,6 +3,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
+from functools import wraps
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -20,6 +21,17 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+def login_required(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'user' in session == recipe.author:
+            return f(*args, **kwargs)
+        else:
+            flash('Login required for editing recipe!')
+            return redirect(url_for('login'))
+    return wrap
+
+
 @app.route("/search", methods=["GET", "POST"])
 def search():
     search = request.form.get("search")
@@ -28,6 +40,7 @@ def search():
 
 
 @app.route("/delete_recipe/<recipe_id>")
+@login_required
 def delete_recipe(recipe_id):
     mongo.db.recipe.remove({"_id": ObjectId(recipe_id)})
     flash("Recipe Deleted!")
@@ -35,6 +48,7 @@ def delete_recipe(recipe_id):
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
+@login_required
 def edit_recipe(recipe_id):
     if request.method == "POST":
         new_recipe = {
