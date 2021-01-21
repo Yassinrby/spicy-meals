@@ -40,9 +40,22 @@ def search():
 
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
-    mongo.db.recipe.remove({"_id": ObjectId(recipe_id)})
-    flash("Recipe Deleted!")
-    return redirect(url_for("home"))
+    if 'user' not in session:
+        flash('You must be logged in to delete the recipe!')
+        return redirect(url_for('login'))
+
+    user_session = mongo.db.users.find_one({'username': session['user']})
+
+    recipe = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
+
+    if recipe['author'] == user_session['username']:
+        mongo.db.recipe.remove({"_id": ObjectId(recipe_id)})
+        flash("Recipe Deleted!")
+        return redirect(url_for("home"))
+
+    else:
+        flash('You can not delete this recipe...')
+        return redirect(url_for('home'))
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
@@ -74,43 +87,13 @@ def edit_recipe(recipe_id):
             flash("Recipe Updated")
             return redirect(url_for("home"))
     else:
-        flash('You cant change this recipe')
+        flash('You can not change this recipe...')
         return redirect(url_for('home'))
 
     recipe = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
 
     meals = mongo.db.meals.find().sort("meal_type", 1)
     return render_template("edit_recipe.html", recipe=recipe, meals=meals)
-
-# THE CODE BELLOW NEEDS TO BE OVERLOOKED:
-
-    # if 'user' not in session:
-    #     flash('You must be logged in to edit the recipe!')
-    #     return redirect(url_for('login'))
-
-    # user_session = mongo.db.users.find_one({'username': session['user']})
-
-    # recipe = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
-
-    # if recipe['author'] == user_session['user'] and request.method == "POST":
-    #     new_recipe = {
-    #         "meal_type": request.form.get("meal_type"),
-    #         "meal_name": request.form.get("meal_name"),
-    #         "meal_description": request.form.get("meal_description"),
-    #         "cuisine": request.form.get("cuisine"),
-    #         "cooking_time": request.form.get("cooking_time"),
-    #         "number_of_servings": request.form.get("number_of_servings"),
-    #         "ingredients": request.form.get("ingredients"),
-    #         "directions": request.form.get("directions"),
-    #         "image_url": request.form.get("image_url"),
-    #         "author": session["user"]
-    #     }
-    #     mongo.db.recipe.insert_one(new_recipe)
-    #     flash("Thank you the new recipe!")
-    #     return redirect(url_for("home"))
-    # else:
-    #     flash("You can only edit your own recipes!")
-    #     return redirect(url_for('home'))
 
 
 @app.route("/recipe/<recipe_id>")
