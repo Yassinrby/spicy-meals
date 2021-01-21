@@ -3,6 +3,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
+import re
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -18,17 +19,6 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 
 mongo = PyMongo(app)
-
-
-# def login_required(f):
-#     @wraps(f)
-#     def wrap(*args, **kwargs):
-#         if 'user' in session == recipe.author:
-#             return f(*args, **kwargs)
-#         else:
-#             flash('Login required for editing recipe!')
-#             return redirect(url_for('login'))
-#     return wrap
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -171,8 +161,21 @@ def logout():
     return redirect(url_for("home"))
 
 
-@app.route("/add_recipe", methods=["GET", "POST"])
+@app.route("/add_recipe/", methods=["GET", "POST"])
 def add_recipe():
+
+    if 'user' not in session:
+        flash('You must be logged in to add a recipe!')
+        return redirect(url_for('login'))
+
+    # url = request.form.get('image_url')
+
+    # check_url = re.findall('^(http|https)://', url)
+
+    # if not check_url:
+    #     flash('Add a proper url or leave it empty!')
+    #     return redirect(url_for('edit_recipe'))
+
     if request.method == "POST":
         new_recipe = {
             "meal_type": request.form.get("meal_type"),
@@ -183,7 +186,7 @@ def add_recipe():
             "number_of_servings": request.form.get("number_of_servings"),
             "ingredients": request.form.get("ingredients"),
             "directions": request.form.get("directions"),
-            "image_url": request.form.get("image_url"),
+            "image_url": url,
             "author": session["user"]
         }
         mongo.db.recipe.insert_one(new_recipe)
