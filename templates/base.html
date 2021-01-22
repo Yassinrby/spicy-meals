@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 
-<!-- Page titles get injected here -->
+    <!-- Page titles get injected here -->
 
     <title>{% block title %} {% endblock %}</title>
 
@@ -45,6 +45,12 @@
                     <a class="nav-link" href="{{ url_for('login') }}">Log in</a>
                     <a class="nav-link" href="{{ url_for('register') }}">Register</a>
                     {% endif %}
+                </div>
+                <div class="navbar-icons mx-auto">
+                    <a target="_blank" href="https://www.instagram.com/"><i
+                            class="fab fa-instagram fa-3x nav-icon"></i></a>
+                    <a target="_blank" href="https://www.facebook.com/"><i
+                            class="fab fa-facebook-square fa-3x nav-icon"></i></a>
                 </div>
             </div>
         </div>
@@ -95,24 +101,6 @@
 
     {% block content %}
     {% endblock %}
-
-    <!-- Footer -->
-
-    <footer>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col">
-                    <a target="_blank" href="https://www.instagram.com/"><i
-                            class="fab fa-instagram fa-3x footer-icon"></i></a>
-                </div>
-                <div class="col">
-                    <a target="_blank" href="https://www.facebook.com/"><i
-                            class="fab fa-facebook-square fa-3x footer-icon"></i></a>
-                </div>
-
-            </div>
-        </div>
-    </footer>
 
 
 

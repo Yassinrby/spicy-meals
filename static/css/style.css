@@ -1,5 +1,11 @@
 body {
-    overflow: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+   min-height:100%;
+   position:relative;
 }
 
 
@@ -11,9 +17,8 @@ body {
     color: #a51409;
 }
 
-footer {
+/* footer {
   height: 10%;
-  margin-top: 30px;  
   position: fixed;
   left: 0;
   bottom: 0;
@@ -22,11 +27,11 @@ footer {
   color: white;
   text-align: center;
   z-index: 999;
-}
+} */
 
-.footer-icon {
-    color: white;
-    margin-top: 15px;
+.nav-icon {
+    color: #a51409;
+    margin-top: 0 10px;
 }
 
 .header {
