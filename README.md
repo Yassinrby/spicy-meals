@@ -235,7 +235,7 @@ To deploy the project to Heroku the following steps need to be completed:
 
 1. Create a requirement.txt file, which contains a list of the dependencies.
 
-2. Create a Procfile, in order to tell Heroku how to run the project.
+2. Create a Procfile to tell Heroku how to run the project.
 
 3. git add, git commit and git push these files to GitHub repository
 
@@ -276,7 +276,7 @@ The app will be deployed and ready to run. Click "Open App" to view the app.
 
 ### Acknowledgments
 
-A big thanks to my Mentor and Tutor Support att Code Institute!
+A big thanks to my Mentor, the task-manager mini project. fellow students and Tutor Support att Code Institute!
 
 
 
