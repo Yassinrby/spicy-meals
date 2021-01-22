@@ -33,10 +33,6 @@ footer {
     margin-top: 25px;
 }
 
-.card {
-    margin: 80px 0;
-    display: table;
-}
 
 .validate {
     width: 80%;
@@ -89,15 +85,9 @@ footer {
     margin: 30px 0;
 }
 
-.card-img-top {
-    width: 100%;
-    height: 15vw;
-    object-fit: cover;
-}
 
-.recipe-card {
-    height: 20vw;
-}
+
+
 
 .img-fluid {
     height: 45vh;
@@ -112,12 +102,8 @@ footer {
     margin: 25px 0;
 }
 
-.card-recipe {
-    min-width: 100%;
-}
-
-.card-body {
-    height: 30vw;
+.recipe-row {
+    margin: 25px 0;
 }
 
 .recipe-gallery {
@@ -145,4 +131,10 @@ footer {
     object-fit: cover;
     max-width: 100%;
     max-height: 100%;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
 }
