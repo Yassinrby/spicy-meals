@@ -17,18 +17,6 @@ body {
     color: #a51409;
 }
 
-/* footer {
-  height: 10%;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #a51409;
-  color: white;
-  text-align: center;
-  z-index: 999;
-} */
-
 .nav-icon {
     color: #a51409;
     margin-top: 0 10px;
@@ -91,9 +79,6 @@ body {
 }
 
 
-
-
-
 .img-fluid {
     height: 45vh;
     width: 45vw;
@@ -142,4 +127,8 @@ body {
     width: 100%;
     height: 15vw;
     object-fit: cover;
+}
+
+.card-form {
+    width: 33%;
 }

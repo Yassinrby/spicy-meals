@@ -20,10 +20,10 @@
         <form action="{{ url_for('search') }}" method="POST" class="form-inline">
             <label for="search">Search Recipe</label>
             <input class="form-control mr-sm-2" type="text" name="search" id="search" minlength="4" maxlength="30"
-                placeholder="Search" aria-label="Search">
+                placeholder="Search" aria-label="Search" required>
             <br>
-            <button class="browse-btn btn btn-light" type="submit">Search</button> <a
-                href="{{ url_for('all_recipes') }}" class="btn btn-outline-dark">Reset</a>
+            <button class="browse-btn btn btn-light" type="submit">Search</button> 
+            <a href="{{ url_for('all_recipes') }}" class="btn btn-outline-dark">Reset</a>
         </form>
     </div>
 
@@ -51,6 +51,7 @@
                     <li class="list-group-item"><b>Meal type:</b> {{recipe.meal_type}}</li>
                     <li class="list-group-item"><b>Author:</b> {{ recipe.author }}</li>
                 </ul>
+                <a href="{{ url_for('recipe', recipe_id=recipe._id) }}" class="stretched-link"></a>
                 <!-- Recipe edit/delete button (only for recipe creator) -->
                 {% if session.user == recipe.author %}
                 <div class="card-body">
