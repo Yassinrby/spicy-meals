@@ -11,54 +11,65 @@
     <br>
     <div class="form-container">
         <div class="card-body">
-            <form method="POST" action ="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
+            <form method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
+                <!-- Pre-filled meal type -->
                 <label for="meal_type" class="form-label">Type of meal</label>
                 <select class="form-select" id="meal_type" name="meal_type" required>
                     <option disabled>Select Meal</option>
                     {% for meal in meals %}
-                        {% if meal.meal_type == recipe.meal_type %}
-                            <option selected value="{{ meal.meal_type }}">{{ meal.meal_type }}</option>   
-                        {% else %}
-                            <option value="{{ meal.meal_type }}">{{ meal.meal_type }}</option>
-                            {% endif %}    
+                    {% if meal.meal_type == recipe.meal_type %}
+                    <option selected value="{{ meal.meal_type }}">{{ meal.meal_type }}</option>
+                    {% else %}
+                    <option value="{{ meal.meal_type }}">{{ meal.meal_type }}</option>
+                    {% endif %}
                     {% endfor %}
 
                 </select>
                 <br>
-                <!-- Recipe name -->
+                <!--  Pre-filled Recipe name -->
                 <label for="meal_name" class="form-label">Meal name</label>
-                <input value="{{ recipe.meal_name }}" id="meal_name" name="meal_name" class="form-control" 
-                type="text" placeholder="Meal name" minlength="5" maxlength="150" required>
+                <input value="{{ recipe.meal_name }}" id="meal_name" name="meal_name" class="form-control" type="text"
+                    placeholder="Meal name" minlength="5" maxlength="150" required>
                 <br>
+                <!-- Pre-filled description -->
                 <label for="meal_description" class="form-label">Meal description</label>
                 <textarea class="form-control" placeholder="Short meal description" minlength="5" maxlength="500"
-                id="meal_description" name="meal_description" required>
+                    id="meal_description" name="meal_description" required>
                 {{- recipe.meal_description -}}
                 </textarea>
                 <br>
+                <!-- Pre-filled cuisine -->
                 <label for="cuisine" class="form-label">Cuisine (optional)</label>
-                <input value="{{ recipe.cuisine }}" class="form-control" type="text" placeholder="Which country or continent" 
-                id="cuisine" name="cuisine">
+                <input value="{{ recipe.cuisine }}" class="form-control" type="text"
+                    placeholder="Which country or continent" id="cuisine" name="cuisine">
                 <br>
                 <label for="cooking_time" class="form-label">Cooking time (in min)</label>
-                <input value="{{ recipe.cooking_time}}" id="cooking_time" name="cooking_time" class="form-control" type="text" 
-                placeholder="Cooking time in minutes" required>
+                <input value="{{ recipe.cooking_time}}" id="cooking_time" name="cooking_time" class="form-control"
+                    type="text" placeholder="Cooking time in minutes" required>
                 <br>
+                <!-- Pre-filled number of servings-->
                 <label for="number_of_servings" class="form-label">Number of servings</label>
-                <input value="{{ recipe.number_of_servings }}" id="number_of_servings" name="number_of_servings" class="form-control" placeholder="Number of servings" required>
+                <input value="{{ recipe.number_of_servings }}" id="number_of_servings" name="number_of_servings"
+                    class="form-control" placeholder="Number of servings" required>
                 <br>
+                <!-- Pre-filled ingredients -->
                 <label for="ingredients" class="form-label">Ingredients</label>
-                <textarea class="form-control" placeholder="Each ingredient on a new line" name="ingredients" id="ingredients" rows="4">
+                <textarea class="form-control" placeholder="Each ingredient on a new line" name="ingredients"
+                    id="ingredients" rows="4">
                     {{- recipe.ingredients -}}
                 </textarea>
                 <br>
+                <!-- Pre-filled directions -->
                 <label for="directions" class="form-label">Directions</label>
-                <textarea class="form-control" placeholder="Each direction on a new line" name="directions" rows="4" id="directions">
+                <textarea class="form-control" placeholder="Each direction on a new line" name="directions" rows="4"
+                    id="directions">
                     {{- recipe.directions -}}
                 </textarea>
                 <br>
+                <!-- Pre-filled image url -->
                 <label for="image_url" class="form-label">Image URL</label>
-                <input value="{{ recipe.image_url }}" class="form-control" placeholder="Default input" name="image_url" id="image_url">
+                <input value="{{ recipe.image_url }}" class="form-control" placeholder="Default input" name="image_url"
+                    id="image_url">
                 <br>
                 <div class="text-center">
                     <button type="submit" class="button text-center">
@@ -69,8 +80,8 @@
                 <br>
                 <br>
                 <br>
-                
-                
+
+
 
             </form>
         </div>

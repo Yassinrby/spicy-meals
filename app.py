@@ -25,7 +25,7 @@ mongo = PyMongo(app)
 def search():
     """
     This function allow user to search for meal type,
-    country/origin of the meal and author
+    country/origin of the meal and author.
 
     """
     search = request.form.get("search")
