@@ -23,6 +23,11 @@ mongo = PyMongo(app)
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    """
+    This function allow user to search for meal type,
+    country/origin of the meal and author
+
+    """
     search = request.form.get("search")
     recipes = list(mongo.db.recipe.find({"$text": {"$search": search}}))
     return render_template("all_recipes.html", recipes=recipes)
@@ -30,6 +35,10 @@ def search():
 
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
+    """
+    Recipe get removed from db.
+    Only the author of the recipe can delete recipe.
+    """
     if 'user' not in session:
         flash('You must be logged in to delete the recipe!')
         return redirect(url_for('login'))
@@ -50,6 +59,10 @@ def delete_recipe(recipe_id):
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+    """
+    Recipe gets updated.
+    Only the author of the recipe can update recipe.
+    """
 
     if 'user' not in session:
         flash('You must be logged in to edit the recipe!')
@@ -88,6 +101,10 @@ def edit_recipe(recipe_id):
 
 @app.route("/recipe/<recipe_id>")
 def recipe(recipe_id):
+    """
+    Displays detailed information about selected recipe.
+
+    """
     selected_recipe = mongo.db.recipe.find_one(
         {"_id": ObjectId(recipe_id)})
     return render_template(
@@ -96,14 +113,22 @@ def recipe(recipe_id):
 
 @app.route("/all_recipes/")
 def all_recipes():
+    """
+    Displays all recipes from the database.
+
+    """
     recipes = list(mongo.db.recipe.find())
     return render_template("all_recipes.html", recipes=recipes)
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    """
+    Created new user in db from HTML form.
+    Checks if user exists and created session cookie.
+
+    """
     if request.method == "POST":
-        # check if username already exists in db
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
@@ -117,7 +142,6 @@ def register():
         }
         mongo.db.users.insert_one(register)
 
-        # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
         return redirect(url_for("home", username=session["user"]))
@@ -127,6 +151,11 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """
+    Sign in function, checks if username and password
+    are valid and created session cookie.
+
+    """
     if request.method == "POST":
         # check if username exists in db
         existing_user = mongo.db.users.find_one(
@@ -156,6 +185,11 @@ def login():
 
 @app.route("/logout")
 def logout():
+    """
+    Sign out user, pop the session cookie
+    and redirects to home page.
+
+    """
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("home"))
@@ -163,6 +197,13 @@ def logout():
 
 @app.route("/add_recipe/", methods=["GET", "POST"])
 def add_recipe():
+    """
+    Add recipe to db from HTML form. Only logged in
+    user can access the function. Regex URL validation
+    if url starts with http/https otherwise the function
+    dont get executed.
+
+    """
 
     if 'user' not in session:
         flash('You must be logged in to add a recipe!')
@@ -200,6 +241,10 @@ def add_recipe():
 @app.route("/")
 @app.route("/home/")
 def home():
+    """
+    Home page
+
+    """
     recipes = mongo.db.recipe.find()
     return render_template("home.html", recipes=recipes)
 
