@@ -1,5 +1,10 @@
 {% extends "base.html" %}
+
+<!-- Page title -->
+
 {% block title %} Add Recipe {% endblock %}
+
+<!-- Add Recipe form -->
 
 {% block content %}
 <div class="container">
@@ -13,6 +18,7 @@
         <div class="card-body">
             <form method="POST" action ="{{ url_for('add_recipe') }}">
                 <label for="meal_type" class="form-label">Type of meal</label>
+                <!-- Meam type -->
                 <select class="form-select" id="meal_type" name="meal_type" required>
                     <option disabled selected>Select Meal</option>
                     {% for meal in meals %}
@@ -21,34 +27,43 @@
 
                 </select>
                 <br>
+                <!-- Meal name -->
                 <label for="meal_name" class="form-label">Meal name</label>
                 <input id="meal_name" name="meal_name" class="form-control" 
                 type="text" placeholder="Meal name" minlength="5" maxlength="150" required>
                 <br>
+                <!-- Meal description -->
                 <label for="meal_description" class="form-label">Meal description</label>
                 <textarea class="form-control" placeholder="Short meal description" minlength="5" maxlength="500"
                 id="meal_description" name="meal_description" required></textarea>
                 <br>
+                <!-- Meal origin -->
                 <label for="cuisine" class="form-label">Cuisine</label>
                 <input class="form-control" type="text" placeholder="Which country or continent/region" 
                 id="cuisine" name="cuisine" required>
                 <br>
+                <!-- Cooking time -->
                 <label for="cooking_time" class="form-label">Cooking time (in min)</label>
                 <input id="cooking_time" name="cooking_time" class="form-control" type="text" 
                 placeholder="Cooking time in minutes" required>
                 <br>
+                <!-- Number of servings -->
                 <label for="number_of_servings" class="form-label">Number of servings</label>
                 <input id="number_of_servings" name="number_of_servings" class="form-control" placeholder="Number of servings" required>
                 <br>
+                <!-- Ingredients -->
                 <label for="ingredients" class="form-label">Ingredients</label>
                 <textarea class="form-control" placeholder="Each ingredient on a new line" name="ingredients" id="ingredients" rows="3"></textarea>
                 <br>
+                <!-- Directions -->
                 <label for="directions" class="form-label">Directions</label>
                 <textarea class="form-control" placeholder="Each direction on a new line" name="directions" id="directions" rows="3"></textarea>
                 <br>
+                <!-- Image on food -->
                 <label for="image_url" class="form-label">Image URL</label>
                 <input pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?" class="form-control" placeholder="Image URL" name="image_url" id="image_url" required>
                 <br>
+                <!-- Submit button -->
                 <div class="text-center">
                     <button type="submit" class="button text-center btn btn-secondary btn-sm">
                         Submit

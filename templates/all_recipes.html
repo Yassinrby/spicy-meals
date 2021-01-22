@@ -1,14 +1,16 @@
 {% extends "base.html" %}
+<!-- Page title -->
 {% block title %} All Recipes {% endblock %}
 
 {% block content %}
-
+<!-- All recipes page -->
 <div class="container">
     <div class="row text-center">
         <div class="col-md-12 header">
             <h1>All Recipes</h1>
         </div>
     </div>
+    <!-- Search functiomality -->
     <div class="row text-center search">
         <form action="{{ url_for('search') }}" method="POST" class="form-inline">
             <label for="search">Search Recipe</label>
@@ -20,24 +22,32 @@
         </form>
 
     </div>
+    <!-- Recipe gallery -->
     <div class="row recipe-gallery">
         {% for recipe in recipes %}
         <div class="col-md-4">
             <div class="card card-recipe">
-                {% if recipe.image_url and ('http') %}
+                <!-- Recipe card -->
+                {% if recipe.image_url %}
+                <!-- Recipe image -->
                 <img src="{{ recipe.image_url }}" class="card-img-top" alt="Recipe image">
                 {% else %}
                 <img src="{{ url_for('static', filename='images/noimage.png') }}" class="card-img-top"
                     alt="Recipe image">
                 {% endif %}
+                <!-- Recipe name -->
                 <div class="card-body recipe-card">
                     <h5 class="card-title">{{ recipe.meal_name }}</h5>
                     <hr>
+                    <!-- Meal type and origin -->
                     <p> <b> {{recipe.cuisine}} </b> {{recipe.meal_type}}</p>
                     <a href="{{ url_for('recipe', recipe_id=recipe._id) }}" class="browse-btn btn btn-light">See
                         Recipe</a>
                     <hr>
+                    <!-- Meal author -->
                     <p><small><b>Author: </b>{{ recipe.author }}</small></p>
+
+                    <!-- Delete/edit buttons availble for recipe author -->
                     {% if session.user == recipe.author %}
 
                     <div class="align-items-end">
@@ -51,17 +61,6 @@
             </div>
         </div>
         {% endfor %}
-        <div class="text-center">
-        <nav aria-label="Page navigation example" class="pag-bar">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav>
-        </div>
     </div>
 
 </div>

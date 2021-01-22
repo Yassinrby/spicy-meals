@@ -1,15 +1,20 @@
 {% extends "base.html" %}
+<!-- Page title -->
 {% block title %} Recipe {% endblock %}
 
 {% block content %}
+
+<!-- Single recipe information -->
 
 <div class="container">
     <div class="form-container">
         <div class="row text-center">
             <div class="col-md-12 header">
+                <!-- Recipe name -->
                 <h1>{{ selected_recipe.meal_name }}</h1>
             </div>
         </div>
+        <!-- Edit or delete recipe button, only available to recipe author -->
         <div class="row text-center">
             {% if session.user == selected_recipe.author%}
             <div class="col-md-6">
@@ -24,20 +29,23 @@
         </div>
 
         <br>
+        <!-- Recipe image or / No image found -->
         <div class="row">
             <div class="col-md-5">
                 <div class="row">
-                    {% if selected_recipe.image_url and ('http') %}
-                    <img src="{{ selected_recipe.image_url }}" class="img-fluid" alt="Meal picture">
+                    {% if selected_recipe.image_url %}
+                    <img src="{{ selected_recipe.image_url }}" class="img-thumbnail" alt="Meal picture">
                     {% else %}
                     <img src="{{ url_for('static', filename='images/noimage.png') }}" class="card-img-top"
                         alt="Recipe image">
                     {% endif %}
                 </div>
+                <!-- Recipe author -->
                 <div class="row">
-                    <span style="font-weight: bold;">Author: <br>{{ selected_recipe.author }}</span>
+                    <span><b> Author: </b><i>{{ selected_recipe.author }} </i></span>
                 </div>
             </div>
+            <!-- Meal description -->
             <div class="col-md-7">
                 <div class="row">
                     <h5 style="font-weight: bold;">{{ selected_recipe.meal_description }}</h5>
@@ -51,6 +59,7 @@
                 </div>
             </div>
         </div>
+        <!-- Meal ingredients -->
         <div class="row">
             <div class="col-md-4">
                 <div class="row">
@@ -66,6 +75,7 @@
                     </ul>
                 </div>
             </div>
+            <!-- Directions -->
             <div class="col-md-8">
                 <div class="row">
                     <h3 class="menu-header">Directions:</h3>

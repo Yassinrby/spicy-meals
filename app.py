@@ -115,9 +115,10 @@ def recipe(recipe_id):
 def all_recipes():
     """
     Displays all recipes from the database.
+    Limits gallery to max 100 recipes.
 
     """
-    recipes = list(mongo.db.recipe.find())
+    recipes = list(mongo.db.recipe.find().limit(100))
     return render_template("all_recipes.html", recipes=recipes)
 
 
@@ -199,8 +200,8 @@ def logout():
 def add_recipe():
     """
     Add recipe to db from HTML form. Only logged in
-    user can access the function. Regex URL validation
-    if url starts with http/https otherwise the function
+    user an access the function. Regex URL validation
+    if it a url or empty starts with http/https otherwise the function
     dont get executed.
 
     """
@@ -209,13 +210,14 @@ def add_recipe():
         flash('You must be logged in to add a recipe!')
         return redirect(url_for('login'))
 
-    # url = request.form.get('image_url')
+    url = request.form.get('image_url')
 
-    # check_url = re.findall('^(http|https)://', url)
+    if url:
+        match = re.search(r'^(http|https):\/\/', url)
 
-    # if not check_url:
-    #     flash('Add a proper url or leave it empty!')
-    #     return redirect(url_for('edit_recipe'))
+        if not match:
+            flash('Add a proper url or leave it empty!')
+            return redirect(url_for('add_recipe'))
 
     if request.method == "POST":
         new_recipe = {
